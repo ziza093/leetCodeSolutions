@@ -85,7 +85,7 @@ struct ListNode* deleteDuplicates(struct ListNode* head){
 
     if(head){
         while(head->next){
-            while(head->val == head->next->val){
+            if(head->val == head->next->val){
                 struct ListNode* temp = head->next;
                 head->next = head->next->next;
                 
@@ -93,8 +93,9 @@ struct ListNode* deleteDuplicates(struct ListNode* head){
                 free(temp);
                 temp = 0;
             }
-
-            head = head->next;
+            else{
+                head = head->next;
+            }
         }
     
     }
